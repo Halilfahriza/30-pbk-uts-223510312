@@ -8,3 +8,4 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(fas);
 
 createApp(App).component("font-awesome-icon", FontAwesomeIcon).mount("#app");
+
