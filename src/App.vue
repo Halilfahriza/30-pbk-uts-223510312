@@ -38,49 +38,32 @@
               <ul class="list-group list-group-flush">
                 <li v-for="(todo, index) in todos" :key="index" class="list-group-item">
                   <div class="row gy-2">
-                    <div class="col-sm-12 col-md-auto me-auto align-self-center fs-5"
-                         :class="{ 'text-decoration-line-through text-muted': todo.isDone }"
-                         v-if="editedTodoIndex !== index">
+                    <div class="col-sm-12 col-md-auto me-auto align-self-center fs-5" :class="{ 'text-decoration-line-through text-muted': todo.isDone }" v-if="editedTodoIndex !== index">
                       {{ todo.activity }}
                     </div>
-                    <div class="col-sm-12 col-md-auto"
-                         v-else>
+                    <div class="col-sm-12 col-md-auto" v-else>
                       <input v-model="editedTodoText" class="form-control" @keyup.enter="saveEdit(index)" @keyup.escape="cancelEdit">
                     </div>
                     <div class="col-sm-12 col-md-auto">
                       <div class="row gx-2">
                         <div class="col-auto">
-                          <button class="btn"
-                                  :class="[
-                                    todo.isDone ? 'btn-outline-secondary' : 'btn-outline-success',
-                                  ]"
-                                  @click="doneTodo(index)">
+                          <button class="btn" :class="[todo.isDone ? 'btn-outline-secondary' : 'btn-outline-success']" @click="doneTodo(index)">
                             <font-awesome-icon icon="circle-check" />
                           </button>
                         </div>
                         <div class="col-auto">
-                          <button class="btn"
-                                  :class="[
-                                    todo.isDone ? 'btn-outline-secondary' : 'btn-outline-danger',
-                                  ]"
-                                  @click="deleteTodo(index)">
+                          <button class="btn" :class="[todo.isDone ? 'btn-outline-secondary' : 'btn-outline-danger']" @click="deleteTodo(index)">
                             <font-awesome-icon icon="eraser" />
                           </button>
                         </div>
                         <div class="col-auto">
-                          <button class="btn btn-outline-primary"
-                                  v-if="editedTodoIndex !== index"
-                                  @click="editTodo(index, todo.activity)">
+                          <button class="btn btn-outline-primary" v-if="editedTodoIndex !== index" @click="editTodo(index, todo.activity)">
                             <font-awesome-icon icon="edit" />
                           </button>
-                          <button class="btn btn-outline-secondary"
-                                  v-else
-                                  @click="cancelEdit">
+                          <button class="btn btn-outline-secondary" v-else @click="cancelEdit">
                             <font-awesome-icon icon="times" />
                           </button>
-                          <button class="btn btn-outline-secondary"
-                                  v-if="editedTodoIndex === index"
-                                  @click="saveEdit(index)">
+                          <button class="btn btn-outline-secondary" v-if="editedTodoIndex === index" @click="saveEdit(index)">
                             <font-awesome-icon icon="check" />
                           </button>
                         </div>
@@ -204,5 +187,24 @@ export default {
 </script>
 
 <style>
-@import "./assets/styles.css";
+body {
+  background: linear-gradient(
+    to right,
+    rgb(199, 25, 25),
+    rgb(12, 140, 190)
+  );
+  font-family: "Times New Roman", sans-serif;
+}
+
+.custom-input {
+  border-radius: 10px;
+  border: 2px solid #da0f0f;
+  padding: 10px;
+  box-shadow: 0px 0px 10px rgba(243, 80, 80, 0.1);
+}
+
+.custom-input:focus {
+  border-color: #007bff;
+  box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.4);
+}
 </style>
