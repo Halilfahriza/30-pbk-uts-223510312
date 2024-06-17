@@ -1,11 +1,14 @@
-import { createApp } from "vue";
-import App from "./App.vue";
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+import { createPinia } from 'pinia';
+import { Quasar } from 'quasar';
+import 'quasar/dist/quasar.css';
 
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+const app = createApp(App);
 
-library.add(fas);
+app.use(router);
+app.use(createPinia());
+app.use(Quasar, {});
 
-createApp(App).component("font-awesome-icon", FontAwesomeIcon).mount("#app");
-
+app.mount('#app');
